@@ -60,7 +60,7 @@ public class DatePickerIT {
 
         LocalDate localDate = LocalDate.of(2001,12,24);
 
-        DatePickerPw datePickerPw = new DatePickerPw(page.locator("#dp"));
+        DatePickerPw datePickerPw = new DatePickerPw(page, "dp");
 
         LocalDate value = datePickerPw.getValue();
         assertNull(value);
