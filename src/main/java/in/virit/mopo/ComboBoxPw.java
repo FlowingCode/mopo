@@ -80,5 +80,14 @@ public class ComboBoxPw {
         root.locator("#toggleButton").click();
         return selectionDropdown();
     }
+    
+    /**
+     * Returns the selected value for the ComboBox
+     *  
+     * @return the selected value
+     */
+    public String getSelection() {
+      return root.locator("input").inputValue();
+    }
 
 }
