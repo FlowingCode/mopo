@@ -2,9 +2,10 @@ package in.virit.mopo;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
+import java.util.Locale;
 /**
  * A helper class to work with vaadin-time-picker component.
  */
@@ -38,7 +39,7 @@ public class TimePickerPw {
      */
     public void setValue(LocalTime value) {
         String formattedTime = (timeFormat == null ? value.toString()
-                : DateTimeFormatter.ofPattern(timeFormat).format(value));
+                : DateTimeFormatter.ofPattern(timeFormat, Locale.ROOT).format(value));
 
         root.fill(formattedTime);
         root.press("Enter");
@@ -47,6 +48,20 @@ public class TimePickerPw {
         Page.WaitForSelectorOptions options = new Page.WaitForSelectorOptions();
         options.setState(options.state.HIDDEN);
         page.waitForSelector("vaadin-time-picker-overlay", options);
+    }
+    
+    /**
+     * Returns the value from the client side and parses it as
+     * {@link LocalDate} using a {@link DateTimeFormatter}.
+     *
+     * @return the current value of the field
+     */
+    public LocalTime getValue() {
+        String value = root.inputValue();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(timeFormat, Locale.ROOT);
+        
+        return timeFormat == null ? LocalTime.parse(value)
+            : LocalTime.parse(value, formatter);
     }
 
     /**
