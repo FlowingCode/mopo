@@ -36,7 +36,7 @@ public class DatePickerPw {
     public LocalDate getValue() {
         String str = (String) root.evaluate("db => db.value");
         try {
-            return LocalDate.parse(str);
+            return LocalDate.parse(str, DateTimeFormatter.ofPattern(dateFormat));
         } catch (java.time.format.DateTimeParseException e) {
             return null;
         }
