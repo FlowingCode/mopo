@@ -1,7 +1,7 @@
 package in.virit.mopo;
 
 import com.microsoft.playwright.Locator;
-
+import java.util.List;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 /**
@@ -29,6 +29,23 @@ public class ComboBoxPw {
     public void filterAndSelectFirst(String filter) {
         filter(filter);
         root.locator("input").press("Enter");
+    }
+
+    /**
+     * Filters the MultiSelectComboBox by searching for each term provided in the filter 
+     * list and selects the first suggestion for each term.
+     *
+     * @param filterList a list of strings representing the terms to be searched 
+     * for and selected in the ComboBox
+     */
+    public void filterAndSelectFirstMultiSelect(List<String> filterList) {
+      root.locator("input").press("Escape");
+      for(String filter: filterList) {
+        filter(filter);
+        root.locator("input").press("Enter");
+        root.locator("input").press("Escape");
+      }
+        root.locator("input").press("Escape");
     }
 
     /**
