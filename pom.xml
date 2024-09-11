@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>in.virit</groupId>
     <artifactId>mopo</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>Mopo</name>
     <packaging>jar</packaging>
     <description>Java Playwright helpers for Vaadin users</description>
 
     <properties>
-        <vaadin.version>24.2.4</vaadin.version>
+        <vaadin.version>24.4.10</vaadin.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -81,7 +81,7 @@
         <dependency>
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
-            <version>1.39.0</version> <!-- Check the latest version via https://playwright.dev -->
+            <version>1.46.0</version> <!-- Check the latest version via https://playwright.dev -->
         </dependency>
 
         <dependency>
