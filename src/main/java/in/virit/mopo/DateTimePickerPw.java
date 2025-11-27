@@ -28,6 +28,9 @@ public class DateTimePickerPw {
      */
     public void setValue(LocalDateTime value) {
         root.evaluate("db => db.value = '%s'".formatted(value));
+        // needed since 25...
+        root.evaluate("db => db.querySelector(\"input\").focus()");
+        root.evaluate("db => db.querySelector(\"input\").blur()");
     }
 
     /**

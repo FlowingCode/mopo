@@ -75,7 +75,7 @@ public class ComboBoxPw {
      */
     public Locator selectionDropdown() {
         // there can be only one
-        return root.page().locator("vaadin-combo-box-overlay");
+        return root.page().locator("vaadin-combo-box-scroller");
     }
 
     /**

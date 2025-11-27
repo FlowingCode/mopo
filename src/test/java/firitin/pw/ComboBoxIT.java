@@ -66,7 +66,7 @@ public class ComboBoxIT {
         assertThat(value).containsText("foo");
 
         cb.fill("ba");
-        Locator overlay = page.locator("vaadin-combo-box-overlay");
+        Locator overlay = page.locator("vaadin-combo-box-scroller");
         // this should be third option & visible
         overlay.getByText("baz").click();
 
