@@ -7,7 +7,7 @@ To try/use Mopo, add following dependency to your pom.xml (or to Gradle build):
     <dependency>
         <groupId>in.virit</groupId>
         <artifactId>mopo</artifactId>
-        <version>0.0.1</version> <!-- check latest version!! ->
+        <version>0.0.6</version> <!-- 0.0.6 or newer for Vaadin 25+, 0.0.5 is the last for v24 series at this point ->
         <scope>test</scope>
     </dependency>
 
