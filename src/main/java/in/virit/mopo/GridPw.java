@@ -1,9 +1,10 @@
 package in.virit.mopo;
 
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
 
 /**
  * A helper class to work with the vaadin-grid component.
@@ -204,17 +205,20 @@ public class GridPw {
          * @return the cell locator
          */
         public Locator getCell(int cellIndex) {
-            int indexInVirtualTable = (Integer) root.evaluate(
-                    "g => g._getRenderedRows().indexOf(g._getRenderedRows().filter(r => r.index == %s)[0]);"
-                            .formatted(rowIndex));
-            indexInVirtualTable += 1; // 1-based :-)
-            String name = root
-                    .locator("#items tr:nth-child(%s) td:nth-child(%s) slot"
-                            .formatted(indexInVirtualTable, cellIndex + 1))
-                    .getAttribute("name");
-            return root.locator(
-                    "vaadin-grid-cell-content[slot='%s']".formatted(name));
+      int indexInVirtualTable =
+          (Integer)
+              root.evaluate(
+                  "g => g._getRenderedRows().indexOf(g._getRenderedRows().filter(r => r.index == %s)[0]);"
+                      .formatted(rowIndex));
+      Locator row =
+          root.locator("#items tr")
+              .filter(new Locator.FilterOptions().setVisible(true))
+              .nth(indexInVirtualTable);
+      String name =
+          row.locator("td:nth-child(%s) slot".formatted(cellIndex + 1)).getAttribute("name");
+      return root.locator("vaadin-grid-cell-content[slot='%s']".formatted(name));
         }
+
 
         /**
          * Gets the cell with the given header text.
